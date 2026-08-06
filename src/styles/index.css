@@ -17,8 +17,9 @@
   --font-heading: 'Archivo', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --radius-sm: 2px;
-  --radius-md: 4px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
 
   --container-max: 1200px;
 }
