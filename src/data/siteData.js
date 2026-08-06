@@ -16,7 +16,6 @@ export const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/#services' },
   { label: 'Portfolio', to: '/#portfolio' },
-  { label: 'Contact', to: '/#contact' },
   { label: 'About', to: '/about' },
 ]
 

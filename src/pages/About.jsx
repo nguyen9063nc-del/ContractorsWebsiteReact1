@@ -19,6 +19,11 @@ export default function About() {
           Swap this in for real About page content — company history, team bios,
           certifications, etc.
         </p>
+        <img
+          src="https://cataas.com/cat?width=500&height=350"
+          alt="A cat"
+          className="about-page__cat"
+        />
         <Link to="/" className="btn btn-primary">
           Back to Home
         </Link>
