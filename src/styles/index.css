@@ -1,0 +1,145 @@
+:root {
+  /* Ridgeline Contracting design tokens (from design-reference/style-guide.md) */
+  --color-charcoal: oklch(0.24 0.012 265);
+  --color-accent: oklch(0.52 0.19 25);
+  --color-accent-hover: oklch(0.42 0.18 25);
+  --color-accent-tint: oklch(0.94 0.03 25);
+  --color-bg: oklch(0.985 0.003 265);
+  --color-bg-alt: oklch(0.96 0.004 265);
+  --color-body-grey: oklch(0.48 0.01 265);
+  --color-border: oklch(0.9 0.005 265);
+
+  --color-dark-text-1: #a8a8ab;
+  --color-dark-text-2: #d8d8da;
+  --color-dark-text-3: #b8b8bb;
+  --color-dark-text-4: #7a7a7d;
+
+  --font-heading: 'Archivo', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --container-max: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  padding: 14px 28px;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-ghost:hover {
+  border-color: #fff;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+}

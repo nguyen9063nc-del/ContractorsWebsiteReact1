@@ -1,0 +1,31 @@
+.about-page {
+  min-height: 60vh;
+}
+
+.about-page__inner {
+  max-width: 640px;
+}
+
+.about-page__title {
+  font-weight: 800;
+  font-size: 2.25rem;
+  margin: 12px 0 20px;
+}
+
+.about-page__copy {
+  color: var(--color-body-grey);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-page__copy code {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+.about-page__copy + .btn {
+  margin-top: 12px;
+}
