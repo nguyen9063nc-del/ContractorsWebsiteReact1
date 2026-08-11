@@ -1,9 +1,9 @@
 :root {
   /* Ridgeline Contracting design tokens (from design-reference/style-guide.md) */
   --color-charcoal: oklch(0.24 0.012 265);
-  --color-accent: oklch(0.52 0.19 250);
-  --color-accent-hover: oklch(0.42 0.18 250);
-  --color-accent-tint: oklch(0.94 0.03 250);
+  --color-accent: oklch(0.52 0.19 25);
+  --color-accent-hover: oklch(0.42 0.18 25);
+  --color-accent-tint: oklch(0.94 0.03 25);
   --color-bg: oklch(0.985 0.003 265);
   --color-bg-alt: oklch(0.96 0.004 265);
   --color-body-grey: oklch(0.48 0.01 265);
