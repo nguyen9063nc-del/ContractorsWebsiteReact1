@@ -2,6 +2,9 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
+import Services from './pages/Services.jsx'
+import Portfolio from './pages/Portfolio.jsx'
+import GetPropertyReady from './pages/GetPropertyReady.jsx'
 
 function App() {
   return (
@@ -9,6 +12,9 @@ function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="get-property-ready" element={<GetPropertyReady />} />
       </Route>
     </Routes>
   )

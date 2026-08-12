@@ -1,0 +1,296 @@
+/* — Hero — */
+.gpr-hero {
+  padding: 88px 32px 64px;
+}
+
+.gpr-hero__title {
+  font-size: clamp(48px, 6.4vw, 104px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.gpr-hero__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-top: 48px;
+  align-items: end;
+}
+
+.gpr-hero__lede {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 500;
+  max-width: 30ch;
+}
+
+.gpr-hero__copy {
+  margin: 0;
+  font-size: 16px;
+  max-width: 44ch;
+  color: var(--color-muted);
+}
+
+@media (max-width: 800px) {
+  .gpr-hero__row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* — Layout — */
+.gpr-form-layout {
+  padding: 96px 32px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.gpr-sidebar {
+  position: sticky;
+  top: 104px;
+}
+
+.gpr-sidebar__title {
+  font-size: clamp(34px, 3.6vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.gpr-sidebar__lede {
+  margin: 24px 0 0;
+  font-size: 17px;
+  max-width: 34ch;
+  color: var(--color-muted);
+}
+
+.gpr-contact {
+  margin-top: 40px;
+  border-top: 2px solid var(--color-divider);
+}
+
+.gpr-contact__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--color-divider);
+  text-decoration: none;
+  color: var(--color-ink);
+  transition: background 120ms ease;
+}
+
+.gpr-contact__row:hover {
+  background: rgba(32, 30, 29, 0.05);
+  color: var(--color-ink);
+}
+
+.gpr-contact__label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.gpr-contact__value {
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .gpr-form-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 56px 20px;
+  }
+  .gpr-sidebar {
+    position: static;
+  }
+}
+
+/* — Confirmation — */
+.gpr-confirm {
+  border: 2px solid var(--color-divider);
+  padding: 56px 48px;
+}
+
+.gpr-confirm__mark {
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent);
+  margin-bottom: 28px;
+}
+
+.gpr-confirm__title {
+  margin: 0 0 12px;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+}
+
+.gpr-confirm__copy {
+  margin: 0;
+  font-size: 17px;
+  max-width: 46ch;
+  color: var(--color-muted);
+}
+
+/* — Form — */
+.gpr-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  border-top: 2px solid var(--color-divider);
+  padding-top: 32px;
+}
+
+.gpr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gpr-field--full {
+  grid-column: 1 / -1;
+}
+
+.gpr-field label,
+.gpr-field__label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.gpr-field__optional {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.gpr-field input,
+.gpr-field textarea {
+  border: 0;
+  border-bottom: 2px solid var(--color-divider);
+  background: transparent;
+  padding: 12px 0;
+  font-size: 17px;
+  color: var(--color-ink);
+  border-radius: 0;
+}
+
+.gpr-field input:focus-visible,
+.gpr-field textarea:focus-visible {
+  outline-offset: 4px;
+}
+
+.gpr-field textarea {
+  border: 2px solid var(--color-divider);
+  padding: 12px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.gpr-file {
+  border: 2px dashed var(--color-divider) !important;
+  padding: 16px !important;
+  font-size: 14px;
+  color: var(--color-muted);
+  width: 100%;
+}
+
+.gpr-dates {
+  background: rgba(207, 81, 51, 0.1);
+  border-left: 4px solid var(--color-accent);
+  padding: 24px 24px 26px;
+  gap: 24px;
+}
+
+.gpr-dates__heading {
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.gpr-dates__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 560px) {
+  .gpr-form {
+    grid-template-columns: 1fr;
+  }
+  .gpr-dates__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* — Needs toggle chips — */
+.gpr-needs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gpr-need {
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 11px 16px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-ink);
+  border: 2px solid var(--color-divider);
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.gpr-need--active {
+  background: var(--color-accent);
+  color: var(--color-ground);
+  border-color: var(--color-accent);
+}
+
+/* — Submit — */
+.gpr-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.gpr-submit {
+  border: 0;
+  background: var(--color-accent);
+  color: var(--color-ground);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 20px 32px;
+  text-align: left;
+  transition: background 140ms ease;
+}
+
+.gpr-submit:hover {
+  background: var(--color-accent-hover);
+}
+
+.gpr-submit:active {
+  background: var(--color-accent-deep);
+}
+
+.gpr-submit__note {
+  font-size: 13px;
+  color: var(--color-muted);
+  max-width: 34ch;
+}
