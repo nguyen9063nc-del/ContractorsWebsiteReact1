@@ -108,12 +108,19 @@ button {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 32px;
+  /* Horizontal only — deliberately not a `padding` shorthand. A shorthand
+     here would also set padding-top/bottom to 0, and since pages combine
+     this class with their own section class on the same element, cascade
+     order (not intent) would decide whether the page's vertical padding
+     survives. Longhand keeps this class out of that fight entirely. */
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
