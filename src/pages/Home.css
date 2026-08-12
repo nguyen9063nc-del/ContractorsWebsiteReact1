@@ -100,6 +100,13 @@
   border-left: 2px solid var(--color-divider);
 }
 
+/* The last row's bottom edge is already drawn by the section's own
+   divider line right below it — giving these items a border too would
+   stack two lines with no gap between them. */
+.home-checklist__grid .home-checklist__item:nth-child(n + 5) {
+  border-bottom: none;
+}
+
 .home-checklist__item--more {
   color: var(--color-muted);
 }
@@ -119,6 +126,12 @@
   .home-checklist__grid .home-checklist__item:nth-child(odd) {
     padding-left: 0;
     border-left: none;
+  }
+  .home-checklist__grid .home-checklist__item:nth-child(n + 5) {
+    border-bottom: 2px solid var(--color-divider);
+  }
+  .home-checklist__grid .home-checklist__item:nth-child(n + 7) {
+    border-bottom: none;
   }
 }
 
