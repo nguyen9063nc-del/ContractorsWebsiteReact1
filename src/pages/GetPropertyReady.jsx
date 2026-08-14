@@ -1,10 +1,45 @@
+import { useEffect, useRef } from 'react'
 import { business, onePoints, portfolioStats } from '../data/siteData.js'
 import './GetPropertyReady.css'
 
 const sidebarStats = [portfolioStats[0], portfolioStats[3]]
 
+// zf_rszfm=1 turns on Zoho's resize broadcast: as the form's content
+// height changes (on load, or when fields are added/removed later), the
+// form page posts "<permalink>|<height>[|scroll]" to the parent window.
+// Without this param the iframe never receives any resize signal at all.
+const ZOHO_FORM_SRC =
+  'https://forms.zohopublic.com/theonlycompany1/form/ContractorWebsite/formperma/Ujz0K3Hwdqp1LXwG6nanFQus-1ozwtoW-11-gq2PQ1w?zf_rszfm=1&zf_enablecamera=true'
+
 export default function GetPropertyReady() {
   const phoneDigits = business.phone.replace(/[^0-9+]/g, '')
+  const zohoFrameRef = useRef(null)
+
+  useEffect(() => {
+    const handleZohoResize = (event) => {
+      if (typeof event.data !== 'string') return
+      const parts = event.data.split('|')
+      if (parts.length !== 2 && parts.length !== 3) return
+
+      const [formPerma, height] = parts
+      const iframe = zohoFrameRef.current
+      if (!iframe || iframe.src.indexOf('formperma') < 0 || iframe.src.indexOf(formPerma) < 0) return
+
+      const newHeight = `${parseInt(height, 10) + 15}px`
+      if (iframe.style.height === newHeight) return
+
+      if (parts.length === 3) {
+        iframe.scrollIntoView()
+        setTimeout(() => {
+          iframe.style.height = newHeight
+        }, 500)
+      } else {
+        iframe.style.height = newHeight
+      }
+    }
+    window.addEventListener('message', handleZohoResize)
+    return () => window.removeEventListener('message', handleZohoResize)
+  }, [])
 
   return (
     <>
@@ -49,11 +84,12 @@ export default function GetPropertyReady() {
 
           <div className="gpr-form">
             <iframe
+              ref={zohoFrameRef}
               aria-label="Contractor Website"
               className="gpr-form__iframe"
               frameBorder="0"
               style={{ width: '99%', border: 'none' }}
-              src="https://forms.zohopublic.com/theonlycompany1/form/ContractorWebsite/formperma/Ujz0K3Hwdqp1LXwG6nanFQus-1ozwtoW-11-gq2PQ1w?zf_enablecamera=true"
+              src={ZOHO_FORM_SRC}
               allow="camera;"
             />
           </div>

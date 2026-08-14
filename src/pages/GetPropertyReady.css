@@ -195,12 +195,13 @@
   padding-top: 32px;
 }
 
-/* The Zoho form's own field layout is responsive to the iframe's width
-   (two columns wide, stacked to one column narrow), so it needs more
-   height at narrow widths than wide ones — a single fixed height can't
-   cover both without either clipping the form or leaving a scrollbar. */
+/* Starting heights only, shown before Zoho's first resize message
+   arrives (see the postMessage listener in GetPropertyReady.jsx) —
+   after that the iframe's own inline height takes over and tracks the
+   form's real content, so it stays correct even if fields are added. */
 .gpr-form__iframe {
   height: 1400px;
+  transition: height 0.4s ease;
 }
 
 @media (max-width: 900px) {
