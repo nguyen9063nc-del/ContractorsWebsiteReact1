@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { business, onePoints, portfolioStats } from '../data/siteData.js'
 import './GetPropertyReady.css'
 
@@ -14,6 +14,10 @@ const ZOHO_FORM_SRC =
 export default function GetPropertyReady() {
   const phoneDigits = business.phone.replace(/[^0-9+]/g, '')
   const zohoFrameRef = useRef(null)
+  // Kept invisible until Zoho reports its real height, so the page never
+  // shows the wrong-sized box (with its momentary inner scrollbar) that
+  // the CSS placeholder height would otherwise flash before correcting.
+  const [zohoReady, setZohoReady] = useState(false)
 
   useEffect(() => {
     const handleZohoResize = (event) => {
@@ -26,19 +30,29 @@ export default function GetPropertyReady() {
       if (!iframe || iframe.src.indexOf('formperma') < 0 || iframe.src.indexOf(formPerma) < 0) return
 
       const newHeight = `${parseInt(height, 10) + 15}px`
-      if (iframe.style.height === newHeight) return
-
-      if (parts.length === 3) {
-        iframe.scrollIntoView()
-        setTimeout(() => {
+      if (iframe.style.height !== newHeight) {
+        if (parts.length === 3) {
+          iframe.scrollIntoView()
+          setTimeout(() => {
+            iframe.style.height = newHeight
+          }, 500)
+        } else {
           iframe.style.height = newHeight
-        }, 500)
-      } else {
-        iframe.style.height = newHeight
+        }
       }
+      setZohoReady(true)
     }
     window.addEventListener('message', handleZohoResize)
-    return () => window.removeEventListener('message', handleZohoResize)
+
+    // Fallback in case the resize message never arrives (blocked by a
+    // privacy extension, etc.) — reveal at the placeholder height rather
+    // than staying invisible forever.
+    const fallback = setTimeout(() => setZohoReady(true), 4000)
+
+    return () => {
+      window.removeEventListener('message', handleZohoResize)
+      clearTimeout(fallback)
+    }
   }, [])
 
   return (
@@ -86,7 +100,7 @@ export default function GetPropertyReady() {
             <iframe
               ref={zohoFrameRef}
               aria-label="Contractor Website"
-              className="gpr-form__iframe"
+              className={'gpr-form__iframe' + (zohoReady ? ' gpr-form__iframe--ready' : '')}
               frameBorder="0"
               style={{ width: '99%', border: 'none' }}
               src={ZOHO_FORM_SRC}

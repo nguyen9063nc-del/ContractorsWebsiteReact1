@@ -195,13 +195,18 @@
   padding-top: 32px;
 }
 
-/* Starting heights only, shown before Zoho's first resize message
-   arrives (see the postMessage listener in GetPropertyReady.jsx) —
-   after that the iframe's own inline height takes over and tracks the
-   form's real content, so it stays correct even if fields are added. */
+/* Starting heights only, used while the iframe is still hidden (see
+   opacity below) waiting for Zoho's first resize message — after that
+   the iframe's own inline height takes over and tracks the form's real
+   content, so it stays correct even if fields are added. */
 .gpr-form__iframe {
   height: 1400px;
-  transition: height 0.4s ease;
+  opacity: 0;
+  transition: height 0.4s ease, opacity 0.25s ease;
+}
+
+.gpr-form__iframe--ready {
+  opacity: 1;
 }
 
 @media (max-width: 900px) {
